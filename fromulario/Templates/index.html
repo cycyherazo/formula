@@ -1,0 +1,71 @@
+{% extends 'layout.html' %} 
+
+{%block body%}
+
+<div class="row">
+    <div class="col-md-5">
+        {% with messages = get_flashed_messages() %}
+        {% if messages%}
+        {% for message in messages %}
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+        <div class="card card-body">
+
+                <form action="/agregar" method="POST">
+                    <div class='form-group'>
+                        <input type="text" name="fullname" placeholder="Fullname" class = 'form-control'>            
+                    </div>
+                    <div class='form-group'>
+                        <input type="text" name="pole_position" placeholder="Pole position" class='form-control'>            
+                    </div>
+                    <div class='form-group'>
+                        <input type="text" name="racing" placeholder="Racing" class='form-control'>            
+                    </div>
+                        <button type="submit" class="btn btn-outline-light">
+                            SAVE
+                        </button>            
+                    </form>
+
+            
+            
+        </div>
+    </div>
+    <div class="col-md-7">
+        <table class='table tale-striped table-bordered bg-white'>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>Nombre</td>
+                    <td>Pole position</td>
+                    <td>Carerras</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                {%for formula in formulas%}
+                <tr>
+                    <td>{{formula.0}}</td>
+                    <td>{{formula.1}}</td>
+                    <td>{{formula.2}}</td>
+                    <td>{{formula.3}}</td>
+                    <td>
+                        <a Href='/edit/{{formula.0}}' class='btn btn-secondary'>Editar</a>
+                        <a Href='/borrar/{{formula.0}}' class='btn btn-danger'>Eliminar</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+{%endblock%}
+

@@ -1,0 +1,15 @@
+{% extends 'layout.html' %} 
+
+{%block body%}
+<form action='/update/{{formula.0}}' method="POST">
+    <input type="text" name="fullname" placeholder="Fullname" value='{{formula.1}}'>
+    <input type="text" name="pole" placeholder="pole" value='{{formula.2}}'>
+    <input type="text" name="sandia" placeholder="sandia" value='{{formula.3}}'>
+
+    <button type="submit">
+        Save
+    </button>
+    
+
+</form>
+{%endblock%}
